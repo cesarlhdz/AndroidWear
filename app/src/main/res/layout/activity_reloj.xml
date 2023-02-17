@@ -28,10 +28,17 @@
             android:layout_height="wrap_content"
             />
         <Spinner
-            android:id="@+id/sp_opciones"
+            android:id="@+id/sp_n1"
             android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/sp_n2"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="35dp"/>
 
     </FrameLayout>
 </androidx.wear.widget.BoxInsetLayout>

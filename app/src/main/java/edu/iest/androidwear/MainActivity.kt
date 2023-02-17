@@ -20,27 +20,37 @@ class MainActivity : Activity(), AdapterView.OnItemSelectedListener {
 
         binding = ActivityRelojBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.tvSaludo.text = "HOLA BRO"
+        binding.tvSaludo.text = "Escoge 2 Números:"
         binding.bnCambio.text = "Enviar"
 
         val adaptador = ArrayAdapter.createFromResource(
             this,
-            R.array.misOpciones, android.R.layout.simple_spinner_item
+            R.array.numeros, android.R.layout.simple_spinner_item
         )
         adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        binding.spOpciones.adapter = adaptador
-        binding.spOpciones.onItemSelectedListener = this
+
+        binding.spN1.adapter = adaptador
+        binding.spN1.onItemSelectedListener = this
+
+        val adaptador2= ArrayAdapter.createFromResource(
+            this,
+            R.array.numeros, android.R.layout.simple_spinner_item
+        )
+        adaptador2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spN2.adapter = adaptador2
+        binding.spN2.onItemSelectedListener = this
+
 
         binding.bnCambio.setOnClickListener {
             val alerta = AlertDialog.Builder(this)
             alerta.setTitle("Atencion")
-                .setMessage("Quiere enviar el saludo $textoSeleccionado")
+                .setMessage("Quiere enviar el numero $textoSeleccionado")
                 .setCancelable(false)
                 .setPositiveButton("OK",
                     DialogInterface.OnClickListener { dialogInterface, i ->
                         //aqui el codigo
-                        binding.tvSaludo.text = textoSeleccionado
+                        binding.tvSaludo.text = ("El numero mayor es $textoSeleccionado")
                     })
                 .setNegativeButton(
                     "Cancelar",
@@ -63,10 +73,10 @@ class MainActivity : Activity(), AdapterView.OnItemSelectedListener {
     ) {
         textoSeleccionado =
             vistaPadre?.getItemAtPosition(posicion).toString()
-        Toast.makeText(
+        /*Toast.makeText(
             this, "Elegiste $textoSeleccionado",
             Toast.LENGTH_LONG
-        ).show()
+        ).show()*/
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
